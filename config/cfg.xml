@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <game>
-	<frame title="Java版俄罗斯方块" windowUp="32" width="1162" height="686" 
-	      padding="16" border="7" sizeRol="5" loseIdx="8"><!-- padding:字与边框距离（“数据库”“本地记录”） -->
+	<!-- padding:字与边框距离（“数据库”“本地记录”） -->
+	<frame title="Java版俄罗斯方块" windowUp="32" width="1162" height="686" padding="16" border="7" sizeRol="5" loseIdx="8">
 		<layer className="ui.LayerBackground" x="0" y="0" w="0" h="0"/>
 		<layer className="ui.LayerDataBase" x="40" y="32" w="334" h="279"/>
 		<layer className="ui.LayerDisk" x="40" y="343" w="334" h="279"/>

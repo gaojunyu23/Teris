@@ -6,9 +6,9 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 @SuppressWarnings("all")
-public class FrameGame extends JFrame{
+public class JFrameGame extends JFrame{
 	
-	public FrameGame() {
+	public JFrameGame() {
 		this.setTitle("Java(JDK8)版俄罗斯方块");
 		this.setSize(1200, 700);
 		//设置关闭游戏自动结束后台进程
@@ -22,7 +22,7 @@ public class FrameGame extends JFrame{
 		
 		//设置游戏窗口居中显示
 		this.setLocation((w-this.getWidth())>>1,(h-this.getHeight())>>1);
-		this.setContentPane(new PanelGame());
+		this.setContentPane(new JPanelGame());
 	}
 	
 }

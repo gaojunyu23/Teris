@@ -5,11 +5,11 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class LayerBackGroud extends Layer{
+public class LayerBackground extends Layer{
 
 	private static Image IMG_TEMP = new ImageIcon("Graphics/background/bg01.jpg").getImage();
 	
-	public LayerBackGroud(int x, int y, int w, int h) {
+	public LayerBackground(int x, int y, int w, int h) {
 		super(x, y, w, h);
 	}
 

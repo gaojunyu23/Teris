@@ -5,12 +5,16 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import config.ConfigFactory;
+import config.GameConfig;
+
 @SuppressWarnings("all")
 public class JFrameGame extends JFrame{
 	
-	public JFrameGame() {
-		this.setTitle("Java(JDK8)版俄罗斯方块");
-		this.setSize(1200, 700);
+	public JFrameGame(JPanelGame jPanelGame) {
+		GameConfig gameConfig = ConfigFactory.getGameConfig();
+		this.setTitle(gameConfig.getTitle());
+		this.setSize(gameConfig.getWidth(), gameConfig.getHeight());
 		//设置关闭游戏自动结束后台进程
 		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		//窗口大小固定
@@ -22,7 +26,8 @@ public class JFrameGame extends JFrame{
 		
 		//设置游戏窗口居中显示
 		this.setLocation((w-this.getWidth())>>1,(h-this.getHeight())>>1);
-		this.setContentPane(new JPanelGame());
+		this.setContentPane(jPanelGame);
+		this.setVisible(true);
 	}
 	
 }

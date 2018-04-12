@@ -26,7 +26,11 @@ public class GameConfig {
 	 */
 	private int border;
 	
-	
+	/**
+	 *游戏窗口标题 
+	 */
+	private String title;
+
 	private List<LayerConfig> layerConfigs = new ArrayList<LayerConfig>();
 	
 	public GameConfig() throws Exception {
@@ -38,7 +42,7 @@ public class GameConfig {
 		this.height = Integer.parseInt(frame.attributeValue("height"));
 		this.padding = Integer.parseInt(frame.attributeValue("padding"));
 		this.border = Integer.parseInt(frame.attributeValue("border"));
-		
+		this.title = frame.attributeValue("title");
 		//设置游戏窗口界面参数
 		this.getUiConfig(frame);
 		//设置系统参数
@@ -100,6 +104,8 @@ public class GameConfig {
 		return layerConfigs;
 	}
 	
-	
+	public String getTitle() {
+		return title;
+	}
 	
 }

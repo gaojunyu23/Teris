@@ -15,11 +15,24 @@ public class GameControl {
 		this.service = service;
 	}
 
-	public void test() {
-		this.service.gameTest();
-		this.panel.repaint(); 
+	public void keyUp() {
+		this.service.keyUp();
+		panel.repaint();
 	}
-	
-	
+
+	public void keyDown() {
+		this.service.keyDown();
+		panel.repaint();
+	}
+
+	public void keyLeft() {
+		this.service.keyLeft();
+		panel.repaint();
+	}
+
+	public void keyRight() {
+		this.service.keyRight();
+		panel.repaint();
+	}	
 	
 }

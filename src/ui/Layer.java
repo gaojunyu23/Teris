@@ -16,7 +16,9 @@ public abstract class Layer {
 	
 	//数字与边框的距离
 	protected final static int PADDING;
+	//窗口边框线粗度
 	private final static int BORDER;
+	
 	protected static GameDto dto = null;
 	static {
 		GameConfig gameConfig = ConfigFactory.getGameConfig();

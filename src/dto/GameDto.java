@@ -46,6 +46,14 @@ public class GameDto {
 	 */
 	private int nowRemoveLine;
 
+	public GameDto() {
+		this.init();
+	}
+	
+	public void init() {
+		this.gameMap = new boolean[10][18];
+	}
+	
 	public List<Player> getDbRecoder() {
 		return dbRecoder;
 	}

@@ -16,38 +16,26 @@ public class GameService {
 	}
 
 	public void keyUp() {
-		if(this.canMove(0, -1)) {
-			this.dto.getGameAct().move(0, -1);
-		}
+		this.dto.getGameAct().round();
 	}
 
 	public void keyDown() {
-		if(this.canMove(0, 1)) {
-			this.dto.getGameAct().move(0, 1);
+		if(!this.dto.getGameAct().move(0, 1)) {
+			boolean[][] gameMap = this.dto.getGameMap();
+			Point[] actPoints = this.dto.getGameAct().getActPoints();
+			for (int i = 0; i < actPoints.length; i++) {
+				gameMap[actPoints[i].x][actPoints[i].y] = true;
+			}
 		}
 	}
 
 	public void keyLeft() {
-		if(this.canMove(-1, 0)) {
-			this.dto.getGameAct().move(-1, 0);
-		}
+		this.dto.getGameAct().move(-1, 0);
 	}
 
 	public void keyRight() {
-		if(this.canMove(1, 0)) {
-			this.dto.getGameAct().move(1, 0);
-		}
+		this.dto.getGameAct().move(1, 0);
 	}	
 	
-	public boolean canMove(int moveX,int moveY) {
-		Point[] actPoints = this.dto.getGameAct().getActPoints();
-		for (int i = 0; i < actPoints.length; i++) {
-			//TODO Ó²±àÂë
-			if(actPoints[i].x+moveX<0||actPoints[i].x+moveX>9||actPoints[i].y+moveY<0||actPoints[i].y+moveY>17) {
-				return false;
-			}
-		}
-		return true;
-	}
 	
 }

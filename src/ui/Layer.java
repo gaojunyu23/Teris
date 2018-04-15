@@ -42,6 +42,10 @@ public abstract class Layer {
 		this.h = h;
 	}
 
+	/**
+	 * 基类提供的框体绘制方法
+	 * @param g
+	 */
 	public void createWindow(Graphics g) {
 		//左上
 		g.drawImage(img, x, y, x+BORDER, y+BORDER, 0, 0, BORDER, BORDER, null);

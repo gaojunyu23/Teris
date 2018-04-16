@@ -40,7 +40,10 @@ public class GameService {
 		//判断是否可以升级
 		//升级
 		//刷新一个新的方块
-		this.dto.getGameAct().init(random.nextInt(MAX_TYPE));
+		this.dto.getGameAct().init(this.dto.getNext());
+		//再刷新下一个下次下落方块
+		this.dto.setNext(random.nextInt(MAX_TYPE));
+		
 	}
 
 	public void keyLeft() {

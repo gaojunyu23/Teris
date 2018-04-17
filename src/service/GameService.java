@@ -54,5 +54,8 @@ public class GameService {
 		this.dto.getGameAct().move(1, 0,this.dto.getGameMap());
 	}	
 	
-	
+	public void testLevelUp() {
+		System.out.println("232");
+		this.dto.setLevel(this.dto.getLevel()+1);
+	}	
 }

@@ -13,7 +13,10 @@ public abstract class Layer {
 	
 	//边框选材图片
 	private Image img = new ImageIcon("Graphics/window/Window.png").getImage();
-	
+	private static final Image IMG_NUMBER = new ImageIcon("Graphics/string/num.png").getImage();
+
+	protected static final int IMG_NUMBER_W = IMG_NUMBER.getWidth(null)/10;
+	private static final int IMG_NUMBER_H = IMG_NUMBER.getHeight(null);
 	//数字与边框的距离
 	protected final static int PADDING;
 	//窗口边框线粗度
@@ -71,5 +74,22 @@ public abstract class Layer {
 
 	public static void setDto(GameDto dto) {
 		Layer.dto = dto;
+	}
+	
+	protected void drawNumber(int x,int y,int num,int maxBit,Graphics g) {
+		String numStr = String.valueOf(num);
+		//循环绘制右对齐数字
+		for (int i = 0; i < maxBit; i++) {
+			//判断是否满足绘制条件
+			if(maxBit-i <= numStr.length()) {
+				int idx = i - maxBit +numStr.length();
+				int cNum = numStr.charAt(idx)-'0';
+				g.drawImage(IMG_NUMBER, 
+						this.x + x + IMG_NUMBER_W*i, this.y + y, 
+						this.x + x + IMG_NUMBER_W*(i+1), this.y + y + IMG_NUMBER_H, 
+						cNum*IMG_NUMBER_W, 0, (cNum+1)*IMG_NUMBER_W, IMG_NUMBER_H, null);
+			}
+			
+		}
 	}
 }

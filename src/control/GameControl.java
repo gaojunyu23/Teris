@@ -35,4 +35,10 @@ public class GameControl {
 		panel.repaint();
 	}	
 	
+	//TODO
+	public void testLevelUp() {
+		this.service.testLevelUp();
+		panel.repaint();
+	}
+	
 }

@@ -1,75 +1,100 @@
 package dto;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import entity.GameAct;
+import config.GameConfig;
 
+import entity.GameAct;
+/**
+ * 游戏数据显示类
+ * （DTO=data transfer object）
+ * @author 高君宇
+ *
+ */
 public class GameDto {
+	private static final int GAMEZONE_W = GameConfig.getSystemConfig().getMaxX() + 1;
+	private static final int GAMEZONE_H = GameConfig.getSystemConfig().getMaxY() + 1;
 	
-	/**
-	 * 数据库玩家记录
+	/*
+	 * 数据库记录
 	 */
-	private List<Player> dbRecoder;
-	
-	/**
-	 * 玩家本地记录
+	private List<Player> dbRecord;
+	/*
+	 * 本地记录
 	 */
-	private List<Player> diskRecoder;
-	
-	/**
-	 * 游戏地图
+	private List<Player> diskRecord;
+	/*
+	 * 游戏地图(储存已经堆积的方块)
 	 */
 	private boolean[][] gameMap;
-	
-	/**
-	 * 游戏下落方块
+	/*
+	 * 下落方块
 	 */
 	private GameAct gameAct;
-	
-	/**
+	/*
 	 * 下一个方块
 	 */
-	private int next;
+	private int next ;
+	//private int next = new Random().nextInt(6);
 	
-	/**
+	/*
 	 * 当前等级
 	 */
-	private int level;
-	
-	/**
-	 * 当前得分
+	private int nowLevel;
+	/*
+	 * 当前分数
 	 */
 	private int nowPoint;
-	
-	/**
-	 *已消行
+	/*
+	 * 消除的行数
 	 */
 	private int nowRemoveLine;
-
-	public GameDto() {
-		this.init();
+	
+	/**
+	 * 
+	 * 构造函数
+	 */
+	public GameDto(){
+		dtoInit();
+	}
+	public void dtoInit(){
+		this.gameMap = new boolean[GAMEZONE_W][GAMEZONE_H];
+		//TODO 初始化所有游戏对象
 	}
 	
-	public void init() {
-		this.gameMap = new boolean[10][18];
+	public List<Player> getDbRecord() {
+		return dbRecord;
+	}
+
+	public void setDbRecord(List<Player> dbRecord) {
+		
+		this.dbRecord = this.setFillRecord(dbRecord);
 	}
 	
-	public List<Player> getDbRecoder() {
-		return dbRecoder;
+	public List<Player> getDiskRecord() {
+		return diskRecord;
 	}
 
-	public void setDbRecoder(List<Player> dbRecoder) {
-		this.dbRecoder = dbRecoder;
+	public void setDiskRecord(List<Player> diskRecord) {
+		
+		this.diskRecord = this.setFillRecord(diskRecord);
 	}
 
-	public List<Player> getDiskRecoder() {
-		return diskRecoder;
+	private List<Player> setFillRecord(List<Player> players){
+		//如果进来的是空，就创建
+		if(players == null){
+			players = new ArrayList<Player>();
+		}
+		//如果记录数小于5，就加到5条为止
+		while(players.size() < 5){
+			players.add(new Player("No Data",0));
+		}
+		Collections.sort(players);
+		return players;
 	}
-
-	public void setDiskRecoder(List<Player> diskRecoder) {
-		this.diskRecoder = diskRecoder;
-	}
-
+	
 	public boolean[][] getGameMap() {
 		return gameMap;
 	}
@@ -94,12 +119,12 @@ public class GameDto {
 		this.next = next;
 	}
 
-	public int getLevel() {
-		return level;
+	public int getNowLevel() {
+		return nowLevel;
 	}
 
-	public void setLevel(int level) {
-		this.level = level;
+	public void setNowLevel(int nowLevel) {
+		this.nowLevel = nowLevel;
 	}
 
 	public int getNowPoint() {

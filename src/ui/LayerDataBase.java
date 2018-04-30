@@ -1,22 +1,16 @@
 package ui;
 
 import java.awt.Graphics;
-import java.awt.Image;
 
-import javax.swing.ImageIcon;
-
-public class LayerDataBase extends Layer{
-
-	private static Image IMG_DB = new ImageIcon("Graphics/string/db.png").getImage();
+public class LayerDataBase extends LayerData{
 	
 	public LayerDataBase(int x, int y, int w, int h) {
 		super(x, y, w, h);
-	}
 
-	@Override
-	public void paint(Graphics g) {
-		this.createWindow(g);
-		g.drawImage(IMG_DB, this.x + PADDING, this.y + PADDING, null);
 	}
-	
+	public void paint(Graphics g){
+		this.createWindow(g);
+		this.showData(Img.DB, this.dto.getDbRecord(), g);
+
+	}
 }

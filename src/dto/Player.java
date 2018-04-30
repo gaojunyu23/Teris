@@ -1,27 +1,30 @@
 package dto;
 
-public class Player {
-	
-	private String name;
-	
-	private int recode;
+import java.io.Serializable;
 
+public class Player implements Comparable<Player>,Serializable {
+	private String name;
+	private int point;
+	public Player(String name, int point) {
+		super();//这里注释掉貌似也没什么影响
+		this.name = name;
+		this.point = point;
+	}
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public int getRecode() {
-		return recode;
+	public int getPoint() {
+		return point;
 	}
-
-	public void setRecode(int recode) {
-		this.recode = recode;
+	public void setPoint(int point) {
+		this.point = point;
 	}
-	
-	
+	@Override
+	public int compareTo(Player pla) {
+		return pla.point - this.point;
+	}
 	
 }
